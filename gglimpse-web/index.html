@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gglimpse - 끌림스</title>
+    <meta name="description" content="대학생만을 위한 로테이션 소개팅, 제대로 된 설렘을 경험하세요.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="#top" onclick="scrollToTop()">
+                    <img src="images/logo.png" alt="gglimpse 로고" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                    <span class="logo-text" style="display: none;">gglimpse</span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="#next-event" class="nav-link">참여 신청</a>
+                <a href="#reviews" class="nav-link">실제 참여 후기</a>
+                <a href="#faq" class="nav-link">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="images/hero-video.mp4" type="video/mp4">
+                <source src="images/hero-video.webm" type="video/webm">
+                <!-- 비디오를 지원하지 않는 브라우저를 위한 폴백 이미지 -->
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">스치는 순간, 끌림의 시작</h1>
+                <h1 class="hero-subtitle">잠깐이면 충분해요</h1>
+                <h1 class="hero-description">끌리는 데엔 시간이 필요 없으니까</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav" id="stickyNav">
+        <div class="sticky-nav-container">
+            <div class="sticky-nav-links">
+                <a href="#brand" class="sticky-nav-link">브랜드 소개</a>
+                <a href="#target" class="sticky-nav-link">참가 대상</a>
+                <a href="#process" class="sticky-nav-link">진행 방식</a>
+                <a href="#reviews" class="sticky-nav-link">후기</a>
+                <a href="#next-event" class="sticky-nav-link">행사 안내</a>
+                <a href="#faq" class="sticky-nav-link">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Brand Introduction -->
+    <section id="brand" class="brand-section">
+        <div class="container">
+            <h2 class="section-title">브랜드 소개</h2>
+            <div class="brand-content">
+                <!-- 1. 왜 gglimpse인가? - 미니멀 섹션 -->
+                <div class="brand-intro-section">
+                    <h2 class="brand-intro-title">✨ 왜 gglimpse인가?</h2>
+                    <div class="brand-intro-content">
+                        <p class="brand-intro-formula">gglimpse = <span class="brand-highlight">끌림</span>(끌리다) + <span class="brand-highlight">glimpse</span>(잠깐 보다)</p>
+                        <p class="brand-intro-sub">짧은 순간의 마주침에서도 끌림은 시작될 수 있어요.</p>
+                        <p class="brand-intro-conclusion">우리는 그 가능성을 믿고, 그 순간을 만들어드립니다.</p>
+                    </div>
+                </div>
+
+                <!-- 2. gglimpse가 특별한 이유 - 미니멀 리스트 -->
+                <div class="brand-special-section">
+                    <h3 class="brand-special-title">gglimpse가 특별한 이유</h3>
+                    <ul class="brand-special-list">
+                        <li class="special-item">
+                            <span class="special-icon">⚡</span>
+                            <div class="special-content">
+                                <span class="special-title">짧고 효율적인 만남</span>
+                                <span class="special-description">10~15분 1:1 로테이션으로 여러 사람을 부담 없이 만날 수 있어요.</span>
+                            </div>
+                        </li>
+                        <li class="special-item">
+                            <span class="special-icon">💜</span>
+                            <div class="special-content">
+                                <span class="special-title">원하는 사람과만 연결</span>
+                                <span class="special-description">상호 선택 매칭 시스템으로, 내가 선택한 사람과만 이어집니다.</span>
+                            </div>
+                        </li>
+                        <li class="special-item">
+                            <span class="special-icon">🛡️</span>
+                            <div class="special-content">
+                                <span class="special-title">안전한 환경과 신뢰성</span>
+                                <span class="special-description">참가자 인증과 철저한 관리로, 안심할 수 있는 만남을 보장합니다.</span>
+                            </div>
+                        </li>
+                        <li class="special-item">
+                            <span class="special-icon">💬</span>
+                            <div class="special-content">
+                                <span class="special-title">준비된 대화</span>
+                                <span class="special-description">사전 작성된 프로필 카드 덕분에 자연스럽게 대화를 시작할 수 있어요.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 참가 대상 -->
+    <section id="target" class="target-section">
+        <div class="container">
+            <h2 class="section-title">💡 이런 분들께 추천합니다</h2>
+            
+            <!-- 고민 말풍선 -->
+            <h3 class="section-subtitle" role="heading" aria-level="3">이런 고민이 익숙하지 않나요?</h3>
+            <ul class="pain-grid" role="list">
+                <li class="pain-bubble">
+                    <p>마음에 들지 않는 상대와 소개팅이 끝나고 거절 멘트를 보내는 게 늘 불편해요</p>
+                </li>
+                <li class="pain-bubble">
+                    <p>실컷 준비하고 소개팅 나갔는데 상대가 내 스타일이 아니면 실망이 커요</p>
+                </li>
+                <li class="pain-bubble">
+                    <p>마음에 안드는 소개팅 상대와 예의상 오래 자리를 지키기 힘들어요</p>
+                </li>
+            </ul>
+            
+            <!-- 구분선 -->
+            <div class="section-divider"></div>
+            
+            <div class="target-content">
+                <div class="target-grid">
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>남초/여초과라 이성을 만날 기회가 거의 없음</p>
+                    </div>
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>내향적이고 술자리도 안 좋아해서 새로운 사람 만나기 어려움</p>
+                    </div>
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>소개팅은 부담스럽고, 미팅은 가벼워 보임</p>
+                    </div>
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>지인 소개팅 찬스 모두 소진됨</p>
+                    </div>
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>MZ식 로테이션 소개팅을 한 번쯤 해보고 싶음</p>
+                    </div>
+                    <div class="target-item">
+                        <span class="target-icon">●</span>
+                        <p>한 번에 여러 명을 만나보고 싶은 효율 추구형</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 다음 섹션 안내 -->
+            <p class="next-cue">다음 섹션에서 <strong>gglimpse 진행 방식</strong>을 확인하세요 ↓</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title" role="heading" aria-level="2">이렇게 해결합니다</h2>
+            <h3 class="section-subtitle" aria-describedby="process-section">gglimpse의 더 나은 만남을 위한 4단계</h3>
+            <div class="process-content">
+                <div class="process-card" role="group" aria-labelledby="process-step-1-title">
+                    <div class="process-badge">
+                        <span class="badge-number">1</span>
+                    </div>
+                    <h3 id="process-step-1-title" class="process-title">참가자 필터링</h3>
+                    <p class="process-lead">💡 사전 검증으로 신뢰도 확보</p>
+                    <div class="process-body">
+                        <p>참가 여부는 신청서 내용을 바탕으로 <strong>진정성과 자기관리 능력</strong>을 종합적으로 고려하여 신중히 검토합니다.</p>
+                        <p>이를 통해 가벼운 만남에 대한 우려를 사전에 차단하고, 진지한 만남의 확률을 높입니다.</p>
+                    </div>
+                    <div class="solution-point">
+                        <span class="solution-icon">✅</span>
+                        <span class="solution-text">가벼운 만남에 대한 우려 → 사전 검증으로 해결</span>
+                    </div>
+                </div>
+                <div class="process-card" role="group" aria-labelledby="process-step-2-title">
+                    <div class="process-badge">
+                        <span class="badge-number">2</span>
+                    </div>
+                    <h3 id="process-step-2-title" class="process-title">10–15분 × 6–8회 1:1 로테이션</h3>
+                    <p class="process-lead">💡 짧고 집중된 대화로 빠른 호감 확인</p>
+                    <div class="process-body">
+                        <p>긴 시간 부담 없이 다양한 사람을 만날 수 있도록, 10–15분 동안 1:1 대화를 진행합니다.</p>
+                        <p>"예의상 두 시간을 버티는" 불편을 없애고, 짧고 집중된 대화로 서로의 첫인상과 호감을 빠르게 확인합니다.</p>
+                    </div>
+                    <div class="solution-point">
+                        <span class="solution-icon">✅</span>
+                        <span class="solution-text">긴 시간 버티기 힘든 문제 → 짧고 집중된 대화로 해결</span>
+                    </div>
+                </div>
+                <div class="process-card" role="group" aria-labelledby="process-step-3-title">
+                    <div class="process-badge">
+                        <span class="badge-number">3</span>
+                    </div>
+                    <h3 id="process-step-3-title" class="process-title">모든 참가자와 대화 후 최대 3명 선택</h3>
+                    <p class="process-lead">💡 마음에 드는 사람만 다음 단계로</p>
+                    <div class="process-body">
+                        <p>모든 참가자와 대화한 뒤, 마음에 드는 사람만 최대 3명 선택합니다.</p>
+                        <p>스타일이 맞지 않는 사람과 억지로 이어가는 상황을 줄이고, 원하는 만남에만 집중할 수 있습니다.</p>
+                    </div>
+                    <div class="solution-point">
+                        <span class="solution-icon">✅</span>
+                        <span class="solution-text">스타일 안 맞는 사람과 억지로 이어가는 문제 → 마음에 드는 사람만 선택</span>
+                    </div>
+                </div>
+                <div class="process-card" role="group" aria-labelledby="process-step-4-title">
+                    <div class="process-badge">
+                        <span class="badge-number">4</span>
+                    </div>
+                    <h3 id="process-step-4-title" class="process-title">상호 선택 시 매칭 성사</h3>
+                    <p class="process-lead">💡 원치 않는 연락 완벽 차단</p>
+                    <div class="process-body">
+                        <p>상대가 나를 선택하고, 나도 그 사람을 선택한 경우에만 연락처를 교환합니다.</p>
+                        <p>이를 통해 거절 멘트를 보내는 불편을 없애고, 서로 원하는 사람과만 연락할 수 있습니다.</p>
+                    </div>
+                    <div class="solution-point">
+                        <span class="solution-icon">✅</span>
+                        <span class="solution-text">거절 멘트 불편 → 원치 않는 연락 차단</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">참가자들이 이렇게 말했어요 💬</h2>
+            <h3 class="section-subtitle">gglimpse에서의 실제 경험담을 들어보세요</h3>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-tag">🎯 효율적인 만남</div>
+                    <div class="review-content">
+                        <p>"여러 사람과 얘기해볼 수 있어서 좋았습니다!<br><strong>잘 맞는 사람과 안 맞는 사람을 알 수 있어서 좋았어요.</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">고○○</div>
+                            <div class="author-details">S대 • 24세 • ISTP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-tag">💬 깊이 있는 대화</div>
+                    <div class="review-content">
+                        <p>"새로운 사람과 다양한 얘기를 나눠보고 싶어서 신청했는데, <strong>적당히 깊이있는 대화를 나눌 수 있어서 좋았어요!</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">최○○</div>
+                            <div class="author-details">K대 • 21세 • INTP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-tag">😊 재참여 의향</div>
+                    <div class="review-content">
+                        <p>"처음에는 좀 긴장됐는데 점점 재밌어졌어요!<br><strong>기회가 되면 또 하고 싶어요.</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">김○○</div>
+                            <div class="author-details">S대 • 25세 • ISFP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-tag">⏰ 시간이 아쉬워</div>
+                    <div class="review-content">
+                        <p>"로테이션 소개팅을 한 번쯤 경험해보고 싶었는데<br><strong>시간이 너무 빨리 지나가서 아쉬웠어요ㅠㅠ</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">임○○</div>
+                            <div class="author-details">S대 • 22세 • ISFP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-tag">💖 즐거운 대화</div>
+                    <div class="review-content">
+                        <p>"여러 좋으신 분들과 대화할 수 있어서 <strong>즐거웠습니다 :) 정말 많이요!</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">최○○</div>
+                            <div class="author-details">H대 • 25세 • ESFJ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-tag">👍 추천 의향</div>
+                    <div class="review-content">
+                        <p>"재밌고 효율적이어서 좋았습니다.<br><strong>지인에게 꼭 추천할게요!!</strong>"</p>
+                    </div>
+                    <div class="review-author">
+                        <div class="author-avatar">👤</div>
+                        <div class="author-info">
+                            <div class="author-name">박○○</div>
+                            <div class="author-details">S대 • 25세 • ENFJ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Next Event -->
+    <section id="next-event" class="next-event-section">
+        <div class="container">
+            <h2 class="section-title">📋 행사 안내</h2>
+            
+            <!-- summary chips -->
+            <div class="summary-chips">
+                <span class="chip">📍 서울 · 카페/파티룸</span>
+                <span class="chip">👥 남녀 각 6–8명</span>
+                <span class="chip">⏱️ 약 2시간 30분</span>
+                <span class="chip">💳 남 30,000 / 여 25,000</span>
+            </div>
+
+            <!-- details list -->
+            <div class="details-list">
+                <div class="detail-item">
+                    <span class="detail-label">장소</span>
+                    <p class="detail-text">서울 내 카페/파티룸 (개별 안내)</p>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">대상</span>
+                    <p class="detail-text">서울/경기권 4년제 대학 재학생·휴학생·대학원생</p>
+                    <p class="detail-secondary">(06년생~00년생)</p>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">인원</span>
+                    <p class="detail-text">남녀 각 6–8명</p>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">시간</span>
+                    <p class="detail-text">약 2시간 30분</p>
+                    <p class="detail-secondary">(10분 대화 + 3분 메모)</p>
+                </div>
+                
+                <div class="detail-item">
+                    <span class="detail-label">참가비</span>
+                    <div class="price-section">
+                        <div class="discount-badge">🎁 사전예약 혜택</div>
+                        <div class="price-row">
+                            <span class="gender">남</span>
+                            <span class="original-price">30,000원</span>
+                            <span class="arrow">→</span>
+                            <span class="discount-price">25,000원</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="gender">여</span>
+                            <span class="original-price">25,000원</span>
+                            <span class="arrow">→</span>
+                            <span class="discount-price">20,000원</span>
+                        </div>
+                    </div>
+                    <p class="detail-secondary">(공간·음료 포함, <strong>결제는 확정 후 안내</strong>)</p>
+                </div>
+            </div>
+
+            <!-- notice box -->
+            <div class="notice-box" role="note" aria-label="사전예약 안내">
+                <div class="notice-header">
+                    <span class="notice-icon">📨</span>
+                    <h3 class="notice-title">지금 <span class="highlight">사전예약</span> 가능합니다</h3>
+                </div>
+                <ul class="notice-list">
+                    <li class="notice-item">
+                        <span class="check-icon">✅</span>
+                        사전예약하시면 회차 확정 시 <strong>가장 먼저</strong> 안내해드려요
+                    </li>
+                    <li class="notice-item">
+                        <span class="check-icon">✅</span>
+                        신청 인원이 많을 경우, <strong>신청서 기반으로 선발</strong>될 수 있어요
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTA section -->
+            <div class="cta-section">
+                <style>
+                  :root{
+                    --primary:#5561ff;          /* 브랜드 컬러 있으면 여기에 교체 */
+                    --primary-2:#3949d6;
+                    --ring: rgba(85,97,255,.25);
+                    --card-bg: rgba(255,255,255,.82);
+                    --border: rgba(0,0,0,.06);
+                  }
+                  .form-wrap{
+                    max-width: 760px; margin:40px auto;
+                    padding: 28px; border-radius: 18px;
+                    background: var(--card-bg);
+                    backdrop-filter: blur(8px);
+                    border: 1px solid var(--border);
+                    box-shadow: 0 12px 34px rgba(48,56,120,.12), 0 2px 6px rgba(0,0,0,.04);
+                    font-family: "Apple SD Gothic Neo","Pretendard","Segoe UI",sans-serif;
+                  }
+                  .form-title{font-size:18px;font-weight:700;margin:0 0 14px;}
+                  .grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr);}
+                  .grid-2{display:grid; gap:12px; grid-template-columns:repeat(2,1fr);}
+                  .field{display:flex;flex-direction:column;gap:6px;}
+                  .label{font-size:13px;color:#5f6b7e;font-weight:600;}
+                  .input, .select{
+                    height:46px; padding:10px 14px; border-radius:10px;
+                    border:1px solid #dee2e6; background:#fff; font-size:15px;
+                    transition:border-color .15s, box-shadow .15s, background .15s;
+                  }
+                  .input:focus, .select:focus{
+                    outline:0; border-color: var(--primary);
+                    box-shadow:0 0 0 5px rgba(85,97,255,.18);
+                  }
+
+                  /* 성별 세그먼트 */
+                  .seg{display:flex; gap:8px;}
+                  .seg input{display:none;}
+                  .seg label{
+                    flex:1; text-align:center; height:46px; line-height:46px;
+                    border:1px solid #dee2e6; border-radius:10px; background:#fff;
+                    cursor:pointer; user-select:none; font-weight:600; color:#485169;
+                    transition:all .15s;
+                  }
+                  .seg input:checked + label{
+                    background:linear-gradient(90deg,var(--primary),var(--primary-2));
+                    color:#fff; border-color:transparent; box-shadow:0 6px 16px rgba(46,58,167,.25);
+                  }
+
+                  .submit{
+                    width:100%; height:48px; border:0; border-radius:12px;
+                    background:linear-gradient(90deg,var(--primary),var(--primary-2));
+                    color:#fff; font-weight:700; letter-spacing:.2px; font-size:16px;
+                    cursor:pointer; margin-top:8px;
+                    box-shadow:0 8px 18px rgba(46,58,167,.25);
+                    transition:transform .12s, box-shadow .12s, opacity .12s;
+                  }
+                  .submit:hover{transform:translateY(-1px)}
+                  .submit:disabled{opacity:.6; cursor:not-allowed; transform:none;}
+
+                  /* 에러 스타일 */
+                  .input.error, .select.error { border-color:#ef4444; box-shadow:0 0 0 4px rgba(239,68,68,.12); }
+                  .help { font-size:12px; color:#9aa3b2; margin-top:2px; }
+
+                  /* 버튼 로딩 표시 */
+                  .submit.loading{ opacity:.7; cursor:wait; }
+                  .submit.loading::after{
+                    content:""; display:inline-block; width:16px; height:16px; margin-left:8px;
+                    border-radius:50%; border:2px solid rgba(255,255,255,.6); border-top-color:#fff;
+                    animation:sp 0.75s linear infinite; vertical-align:-3px;
+                  }
+                  @keyframes sp { to { transform:rotate(360deg) } }
+
+                  @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
+                  @media (max-width:600px){
+                    .form-wrap{margin:20px; padding:20px}
+                    .grid, .grid-2{grid-template-columns:1fr}
+                    .input,.select{ font-size:16px; }       /* iOS 줌 방지 */
+                  }
+                </style>
+
+                <div class="form-wrap">
+                  <p class="form-title">사전예약</p>
+                  <form id="preRegForm"
+                        action="https://script.google.com/macros/s/AKfycbwrlDK-tGIt50hWiLAuyoYsgkp14Wbax-UhcxemQeHMGt3-koyZPOksPEl_g2oxN2_Klw/exec"
+                        method="POST" autocomplete="off">
+
+                    <div class="grid">
+                      <div class="field">
+                        <span class="label">이름</span>
+                        <input class="input" name="name" placeholder="홍길동" autocomplete="name" required>
+                      </div>
+
+                      <div class="field">
+                        <span class="label">성별</span>
+                        <div class="seg">
+                          <input id="g-m" type="radio" name="gender" value="M" required><label for="g-m">남자</label>
+                          <input id="g-f" type="radio" name="gender" value="F"><label for="g-f">여자</label>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <span class="label">출생연도</span>
+                        <select class="select" name="birthYear" required>
+                          <option value="" hidden>선택해주세요</option>
+                          <option>2000</option><option>2001</option><option>2002</option>
+                          <option>2003</option><option>2004</option><option>2005</option><option>2006</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="grid-2" style="margin-top:8px">
+                      <div class="field">
+                        <span class="label">학교</span>
+                        <input class="input" name="university" placeholder="@@대학교" autocomplete="organization" required>
+                      </div>
+                      <div class="field">
+                        <span class="label">학과</span>
+                        <input class="input" name="major" placeholder="@@학과" autocomplete="off" required>
+                      </div>
+                    </div>
+
+                    <div class="field" style="margin-top:8px">
+                      <span class="label">연락처</span>
+                      <input class="input" name="phone" placeholder="01012345678" autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{9,11}" required>
+                      <div class="help">숫자만 입력 (하이픈 없이)</div>
+                    </div>
+
+                    <!-- reCAPTCHA -->
+                    <input type="hidden" name="token" id="captchaToken">
+                    <button type="button"
+                            id="submitBtn"
+                            class="submit g-recaptcha"
+                            data-sitekey="6LfEQ6wrAAAAABpGQPrDwuZyb5mbOgRDbWPmGigQ"
+                            data-size="invisible"
+                            data-action="submit"
+                            data-badge="inline"
+                            data-callback="onCaptcha">
+                      사전예약 신청하기
+                    </button>
+
+                    <!-- 배지 주변 여백 정리 -->
+                    <style>
+                      .grecaptcha-badge { margin-top: 10px; transform: scale(.95); transform-origin: left top; }
+                    </style>
+                  </form>
+                </div>
+                
+                <script>
+                  function onCaptcha(token){
+                    const btn = document.getElementById('submitBtn');
+                    btn.classList.add('loading'); btn.disabled = true;
+                    document.getElementById('captchaToken').value = token;
+                    document.getElementById('preRegForm').submit();
+                  }
+                </script>
+            </div>
+
+            <!-- minimal premium styles -->
+            <style>
+                /* Summary Chips */
+                .summary-chips {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1.25rem;
+                    margin: 0 0 2rem 0;
+                }
+                
+                .chip {
+                    padding: 1rem 2rem;
+                    background: #F8FAFC;
+                    border: 1px solid #E2E8F0;
+                    border-radius: 50px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    color: #1E293B;
+                    white-space: nowrap;
+                    transition: all 0.2s ease;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                }
+                
+                .chip:hover {
+                    background: #F1F5F9;
+                    border-color: #CBD5E1;
+                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+                }
+                
+                @media (max-width: 640px) {
+                    .summary-chips {
+                        gap: 1.5rem;
+                        overflow-x: auto;
+                        padding-bottom: 0.5rem;
+                    }
+                    .summary-chips::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+
+                /* Details List */
+                .details-list {
+                    margin: 2rem 0;
+                    background: white;
+                    border-radius: 16px;
+                    border: 1px solid #F1F5F9;
+                    overflow: hidden;
+                }
+                
+                .detail-item {
+                    padding: 1.75rem 1.5rem;
+                    border-bottom: 1px solid #F1F5F9;
+                    transition: background-color 0.2s ease;
+                }
+                
+                .detail-item:hover {
+                    background-color: #FAFAFA;
+                }
+                
+                .detail-item:last-child {
+                    border-bottom: none;
+                }
+                
+                .detail-label {
+                    display: block;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: #7D6BFF;
+                    margin-bottom: 1rem;
+                }
+                
+                .detail-text {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: #1E293B;
+                    line-height: 1.6;
+                    margin: 0 0 0.75rem 0;
+                }
+                
+                .detail-secondary {
+                    font-size: 0.8rem;
+                    color: #64748B;
+                    line-height: 1.5;
+                    margin: 0;
+                    padding-left: 0.75rem;
+                    border-left: 2px solid #E2E8F0;
+                }
+                
+                @media (min-width: 768px) {
+                    .details-list {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 0 2rem;
+                    }
+                    
+                    .detail-item {
+                        padding: 1.5rem 2rem;
+                    }
+                    
+                    .detail-item:nth-child(odd) {
+                        border-right: 1px solid #F1F5F9;
+                    }
+                }
+
+                /* 가격 섹션 스타일 */
+                .price-section {
+                    margin: 1rem 0;
+                }
+                
+                .discount-badge {
+                    display: inline-block;
+                    background: linear-gradient(135deg, #7D6BFF, #9F7AEA);
+                    color: white;
+                    padding: 0.5rem 1rem;
+                    border-radius: 20px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                    box-shadow: 0 2px 8px rgba(125, 107, 255, 0.3);
+                }
+                
+                .price-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 0.75rem;
+                    font-size: 1.125rem;
+                    line-height: 1.4;
+                }
+                
+                .price-row:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .gender {
+                    font-weight: 600;
+                    color: #64748B;
+                    min-width: 1.5rem;
+                }
+                
+                .original-price {
+                    text-decoration: line-through;
+                    color: #94A3B8;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+                
+                .arrow {
+                    color: #7D6BFF;
+                    font-weight: 600;
+                    font-size: 1.125rem;
+                }
+                
+                .discount-price {
+                    color: #7D6BFF;
+                    font-weight: 700;
+                    font-size: 1.25rem;
+                }
+
+                /* Notice Box */
+                .notice-box {
+                    background: linear-gradient(135deg, #F8FAFF 0%, #F0F4FF 100%);
+                    border: 1px solid #E0E7FF;
+                    border-radius: 20px;
+                    padding: 2.5rem;
+                    margin: 2rem 0;
+                    position: relative;
+                }
+                
+                .notice-box::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: #7D6BFF;
+                }
+                
+                .notice-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 1.25rem;
+                    margin-bottom: 2rem;
+                }
+                
+                .notice-icon {
+                    font-size: 1.5rem;
+                    background: white;
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 4px 16px rgba(125, 107, 255, 0.15);
+                }
+                
+                .notice-title {
+                    font-size: 1.375rem;
+                    font-weight: 700;
+                    color: #1E293B;
+                    margin: 0;
+                    line-height: 1.3;
+                }
+                
+                .highlight {
+                    color: #7D6BFF;
+                    font-weight: 900;
+                    text-shadow: 0 0 1px rgba(125, 107, 255, 0.3);
+                    background: linear-gradient(135deg, #7D6BFF, #9F7AEA);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    font-size: 1.1em;
+                }
+                
+                .notice-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                
+                .notice-item {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    margin-bottom: 1.25rem;
+                    font-size: 1.125rem;
+                    line-height: 1.7;
+                    color: #374151;
+                    padding: 1rem;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-radius: 12px;
+                    border: 1px solid rgba(224, 231, 255, 0.5);
+                }
+                
+                .notice-item:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .check-icon {
+                    flex-shrink: 0;
+                    margin-top: 0.125rem;
+                    font-size: 0.95rem;
+                }
+
+                /* CTA Section */
+                .cta-section {
+                    background: white;
+                    border: 1px solid #F1F5F9;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    margin: 2rem 0;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                }
+                
+                .cta-buttons {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    margin-bottom: 1.5rem;
+                }
+                
+                @media (min-width: 640px) {
+                    .cta-buttons {
+                        flex-direction: row;
+                    }
+                }
+                
+                .btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1rem 2rem;
+                    border-radius: 12px;
+                    font-weight: 600;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                    border: 2px solid transparent;
+                    cursor: pointer;
+                    min-height: 3rem;
+                }
+                
+                .btn:focus {
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(125, 107, 255, 0.3);
+                }
+                
+                .btn-primary {
+                    background: #7D6BFF;
+                    color: white;
+                }
+                
+                .btn-primary:hover {
+                    background: #6B5BFF;
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 12px rgba(125, 107, 255, 0.3);
+                }
+                
+                .btn-secondary {
+                    background: transparent;
+                    border-color: #E2E8F0;
+                    color: #475569;
+                }
+                
+                .btn-secondary:hover {
+                    background: #F8FAFC;
+                    border-color: #7D6BFF;
+                    color: #7D6BFF;
+                }
+                
+                .cta-info {
+                    text-align: center;
+                }
+                
+                .microcopy {
+                    color: #64748B;
+                    font-size: 0.875rem;
+                    margin-bottom: 1rem;
+                    line-height: 1.5;
+                }
+                
+                .stock-badges {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.75rem;
+                }
+                
+                .stock-badge {
+                    padding: 0.375rem 0.875rem;
+                    border-radius: 8px;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                }
+                
+                .stock-male {
+                    background: #FEF3C7;
+                    color: #92400E;
+                }
+                
+                .stock-female {
+                    background: #FCE7F3;
+                    color: #9D174D;
+                }
+                
+                @media (min-width: 768px) {
+                    .stock-badges {
+                        justify-content: flex-end;
+                    }
+                }
+
+                /* 이용약관 및 개인정보처리방침 모달 스타일 */
+                .terms-link,
+                .privacy-link {
+                    color: #64748B;
+                    text-decoration: none;
+                    transition: color 0.2s ease;
+                    margin-right: 1rem;
+                }
+                
+                .terms-link:hover,
+                .privacy-link:hover {
+                    color: #7D6BFF;
+                }
+                
+                .modal-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.6);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    padding: 20px;
+                }
+                
+                .modal-content {
+                    background: white;
+                    border-radius: 16px;
+                    max-width: 800px;
+                    width: 100%;
+                    max-height: 80vh;
+                    overflow: hidden;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    animation: modalSlideIn 0.3s ease;
+                }
+                
+                @keyframes modalSlideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .modal-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 1.5rem 2rem;
+                    border-bottom: 1px solid #E2E8F0;
+                    background: #F8FAFC;
+                }
+                
+                .modal-title {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #1E293B;
+                    margin: 0;
+                }
+                
+                .modal-close {
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    color: #64748B;
+                    cursor: pointer;
+                    padding: 0.5rem;
+                    border-radius: 8px;
+                    transition: all 0.2s ease;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .modal-close:hover {
+                    background: #E2E8F0;
+                    color: #1E293B;
+                }
+                
+                .modal-body {
+                    padding: 2rem;
+                    overflow-y: auto;
+                    max-height: calc(80vh - 100px);
+                }
+                
+                .terms-content h4,
+                .privacy-content h4 {
+                    font-size: 1.125rem;
+                    font-weight: 700;
+                    color: #1E293B;
+                    margin: 1.5rem 0 0.75rem 0;
+                    padding-top: 1rem;
+                    border-top: 1px solid #E2E8F0;
+                }
+                
+                .terms-content h4:first-child,
+                .privacy-content h4:first-child {
+                    border-top: none;
+                    padding-top: 0;
+                    margin-top: 0;
+                }
+                
+                .terms-content p,
+                .privacy-content p {
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    color: #475569;
+                    margin: 0 0 0.75rem 0;
+                }
+                
+                .terms-content p:last-child,
+                .privacy-content p:last-child {
+                    margin-bottom: 0;
+                }
+                
+                .contact-link {
+                    color: #7D6BFF;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: color 0.2s ease;
+                }
+                
+                .contact-link:hover {
+                    color: #6B5BFF;
+                    text-decoration: underline;
+                }
+                
+                /* 개인정보처리방침 전용 스타일 */
+                .privacy-intro {
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                    color: #374151;
+                    margin-bottom: 2rem;
+                    padding: 1rem;
+                    background: #F8FAFC;
+                    border-radius: 8px;
+                    border-left: 4px solid #7D6BFF;
+                }
+                
+                .privacy-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 1rem 0;
+                }
+                
+                .privacy-list li {
+                    padding: 0.5rem 0;
+                    border-bottom: 1px solid #F1F5F9;
+                    line-height: 1.6;
+                }
+                
+                .privacy-list li:last-child {
+                    border-bottom: none;
+                }
+                
+                .privacy-list strong {
+                    color: #1E293B;
+                    font-weight: 600;
+                }
+                
+                .privacy-note {
+                    font-size: 0.9rem;
+                    color: #64748B;
+                    font-style: italic;
+                    margin: 0.5rem 0 1rem 0;
+                    padding: 0.75rem;
+                    background: #FEF3C7;
+                    border-radius: 6px;
+                    border-left: 3px solid #F59E0B;
+                }
+                
+                .privacy-contact {
+                    background: #F0F9FF;
+                    border: 1px solid #BAE6FD;
+                    border-radius: 8px;
+                    padding: 1rem;
+                    margin: 1rem 0;
+                    color: #0C4A6E;
+                }
+                
+                /* 모바일 반응형 */
+                @media (max-width: 768px) {
+                    .modal-content {
+                        max-width: 95%;
+                        max-height: 90vh;
+                    }
+                    
+                    .modal-header {
+                        padding: 1rem 1.5rem;
+                    }
+                    
+                    .modal-title {
+                        font-size: 1.25rem;
+                    }
+                    
+                    .modal-body {
+                        padding: 1.5rem;
+                    }
+                    
+                    .terms-content h4,
+                    .privacy-content h4 {
+                        font-size: 1rem;
+                    }
+                    
+                    .terms-content p,
+                    .privacy-content p {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                /* FAQ Section Styles */
+                .faq-controls {
+                    margin: 2rem 0 3rem 0;
+                }
+                
+                .search-container {
+                    position: relative;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .faq-search {
+                    width: 100%;
+                    padding: 1rem 3rem 1rem 1.5rem;
+                    border: 2px solid #E2E8F0;
+                    border-radius: 12px;
+                    font-size: 1rem;
+                    transition: all 0.2s ease;
+                    background: white;
+                }
+                
+                .faq-search:focus {
+                    outline: none;
+                    border-color: #7D6BFF;
+                    box-shadow: 0 0 0 3px rgba(125, 107, 255, 0.1);
+                }
+                
+                .search-icon {
+                    position: absolute;
+                    right: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 1.125rem;
+                    color: #94A3B8;
+                }
+                
+                .category-filters {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.75rem;
+                }
+                
+                .category-chip {
+                    padding: 0.75rem 1.25rem;
+                    border: 1px solid #E2E8F0;
+                    border-radius: 50px;
+                    background: white;
+                    color: #64748B;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+                
+                .category-chip:hover {
+                    border-color: #7D6BFF;
+                    color: #7D6BFF;
+                }
+                
+                .category-chip.active {
+                    background: #7D6BFF;
+                    color: white;
+                    border-color: #7D6BFF;
+                }
+                
+                .faq-list {
+                    margin: 2rem 0;
+                }
+                
+                .faq-item {
+                    background: white;
+                    border: 1px solid #F1F5F9;
+                    border-radius: 16px;
+                    margin-bottom: 1rem;
+                    overflow: hidden;
+                    transition: all 0.2s ease;
+                }
+                
+                .faq-item:hover {
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                    transform: translateY(-1px);
+                }
+                
+                .faq-question {
+                    width: 100%;
+                    padding: 1.5rem 2rem;
+                    background: none;
+                    border: none;
+                    text-align: left;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #1E293B;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    transition: all 0.2s ease;
+                }
+                
+                .faq-question:hover {
+                    background: #F8FAFC;
+                }
+                
+                .faq-question[aria-expanded="true"] {
+                    background: #F8FAFF;
+                    border-bottom: 1px solid #E0E7FF;
+                }
+                
+                .faq-icon {
+                    font-size: 1.25rem;
+                    color: #7D6BFF;
+                    transition: transform 0.2s ease;
+                }
+                
+                .faq-question[aria-expanded="true"] .faq-icon {
+                    transform: rotate(45deg);
+                }
+                
+                .faq-answer {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease;
+                }
+                
+                .faq-answer[aria-hidden="false"] {
+                    max-height: 500px;
+                    padding: 1.5rem 2rem;
+                }
+                
+                .faq-answer p {
+                    margin: 0;
+                    line-height: 1.6;
+                    color: #475569;
+                }
+                
+                /* FAQ 페이지네이션 */
+                .faq-pagination {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin: 2rem 0;
+                }
+                
+                .faq-pagination .page-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border: 1px solid #E2E8F0;
+                    background: transparent;
+                    color: #64748B;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+                    cursor: pointer;
+                }
+                
+                .faq-pagination .page-btn:hover {
+                    background: #F8FAFC;
+                    border-color: #7D6BFF;
+                    color: #7D6BFF;
+                }
+                
+                .faq-pagination .page-btn.active {
+                    background: #7D6BFF;
+                    color: white;
+                    border-color: #7D6BFF;
+                }
+                
+                .faq-pagination .page-btn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+                
+                .faq-controls-bottom {
+                    display: flex;
+                    justify-content: center;
+                    gap: 1rem;
+                    margin-top: 2rem;
+                }
+                
+                .btn-ghost {
+                    background: transparent;
+                    border: 1px solid #E2E8F0;
+                    color: #64748B;
+                }
+                
+                .btn-ghost:hover {
+                    background: #F8FAFC;
+                    border-color: #7D6BFF;
+                    color: #7D6BFF;
+                }
+                
+                .btn-icon {
+                    margin-left: 0.5rem;
+                    font-size: 1.125rem;
+                }
+                
+                /* Highlight search results */
+                .highlight-match {
+                    background: #FEF3C7;
+                    padding: 0.125rem 0.25rem;
+                    border-radius: 4px;
+                }
+                
+                /* Responsive */
+                @media (max-width: 640px) {
+                    .category-filters {
+                        gap: 0.5rem;
+                    }
+                    
+                    .category-chip {
+                        padding: 0.5rem 1rem;
+                        font-size: 0.8rem;
+                    }
+                    
+                    .faq-question {
+                        padding: 1.25rem 1.5rem;
+                    }
+                    
+                    .faq-answer[aria-hidden="false"] {
+                        padding: 1.25rem 1.5rem;
+                    }
+                }
+            </style>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <p class="section-subtitle">빠르게 찾고, 없으면 바로 문의하기</p>
+            
+            <!-- FAQ 검색 및 필터 -->
+            <div class="faq-controls">
+                <div class="search-container">
+                    <input type="text" id="faq-search" class="faq-search" placeholder="궁금한 내용을 검색해보세요..." aria-label="FAQ 검색">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <div class="category-filters">
+                    <button class="category-chip active" data-category="all" aria-pressed="true">전체</button>
+                    <button class="category-chip" data-category="participation" aria-pressed="false">참가/운영</button>
+                    <button class="category-chip" data-category="matching" aria-pressed="false">매칭/결과</button>
+                    <button class="category-chip" data-category="payment" aria-pressed="false">결제/환불</button>
+                    <button class="category-chip" data-category="on-site" aria-pressed="false">현장 준비</button>
+                    <button class="category-chip" data-category="safety" aria-pressed="false">안전/신뢰성</button>
+                    <button class="category-chip" data-category="other" aria-pressed="false">기타</button>
+                </div>
+            </div>
+            
+                                <!-- FAQ 목록 -->
+                    <div class="faq-list" id="faq-list">
+                        <!-- FAQ 아이템들은 JavaScript로 동적 생성 -->
+                    </div>
+                    
+                    <!-- FAQ 페이지네이션 -->
+                    <div class="faq-pagination" id="faq-pagination">
+                        <!-- 페이지 버튼들은 JavaScript로 동적 생성 -->
+                    </div>
+                    
+                    <!-- FAQ 컨트롤 -->
+                    <div class="faq-controls-bottom">
+                        <button class="btn btn-ghost" id="expand-all" aria-expanded="false">
+                            <span class="btn-text">모두 펼치기</span>
+                            <span class="btn-icon">📖</span>
+                        </button>
+                        <button class="btn btn-ghost" id="collapse-all" aria-expanded="false">
+                            <span class="btn-text">모두 닫기</span>
+                            <span class="btn-icon">📕</span>
+                        </button>
+                    </div>
+        </div>
+        
+        <!-- FAQPage Schema -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "참가 조건은 어떻게 되나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "서울/경기 소재 대학(원) 재학생·휴학생(00~06년생)만 참여할 수 있습니다. 행사 전 신분증 인증이 필수예요."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "진행 방식은 어떻게 되나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "참가자는 10분간 1:1 대화를 나눈 뒤, 3분간 메모를 작성합니다. 이후 남자 참가자가 자리를 옮겨 새로운 대화를 이어가요. 모든 라운드가 끝나면 최대 3명까지 호감을 선택할 수 있어요."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "매칭 결과는 언제 알 수 있나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "행사 종료 후 당일 밤 11시까지 문자로 안내드립니다. 서로 호감을 표시한 경우에만 매칭이 성사되며, 그때 연락처가 공유됩니다."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "참가비는 얼마인가요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "남자 25,000원 / 여자 20,000원 (음료·다과 및 공간 대여 비용 포함)."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "환불은 가능한가요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "행사 5일 전까지는 100% 환불되며, 이후에는 환불이 불가합니다."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "개인정보는 어떻게 관리되나요?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "신청 시 제공된 개인정보는 매칭 및 운영 목적 외에는 사용되지 않으며, 행사 종료 후 안전하게 파기됩니다."
+                    }
+                }
+            ]
+        }
+        </script>
+    </section>
+
+    <!-- 이용약관 모달 -->
+    <div id="termsModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content terms-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">이용약관</h3>
+                <button class="modal-close" onclick="closeTermsModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="terms-content">
+                    <h4>제1조 (목적)</h4>
+                    <p>이 약관은 gglimpse(이하 "주최자")가 제공하는 오프라인 소개팅 이벤트(이하 "이벤트") 참가와 관련하여 주최자와 참가자 간 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+                    
+                    <h4>제2조 (참가 자격 및 신청)</h4>
+                    <p>1. 본 이벤트는 만 19세 이상 성인만 참가할 수 있습니다.</p>
+                    <p>2. 참가자는 주최자가 지정한 방법을 통해 신청 및 참가비 결제를 완료해야 하며, 주최자의 승인을 통해 참가가 확정됩니다.</p>
+                    
+                    <h4>제3조 (취소 및 환불 규정)</h4>
+                    <p>1. 참가자가 행사 5일 전까지 취소할 경우 전액 환불되며 이후 환불은 불가합니다.</p>
+                    <p>2. 주최자 귀책으로 행사가 취소될 경우 참가비 전액을 환불합니다.</p>
+                    
+                    <h4>제4조 (참가자의 의무)</h4>
+                    <p>1. 참가자는 행사 시간을 준수해야 하며, 지각 및 무단 불참 시 향후 이벤트 참가 제한 등의 불이익이 있을 수 있습니다.</p>
+                    <p>2. 참가자는 타 참가자에게 예의를 지켜야 하며, 행사 질서를 해치거나 불쾌감을 주는 행위를 해서는 안 됩니다.</p>
+                    <p>3. 참가자는 자신의 건강 상태를 고려하여 행사에 참여해야 하며, 주최자는 개인적인 건강 문제로 발생한 사고에 대해 책임을 지지 않습니다.</p>
+                    <p>4. 참가자는 주최자의 안내 및 규정을 따라야 합니다.</p>
+                    
+                    <h4>제5조 (주최자의 권리와 의무)</h4>
+                    <p>1. 주최자는 원활하고 공정한 행사 운영을 위해 필요 시 참가자의 신청을 제한하거나, 행사 중 퇴장 조치를 취할 수 있습니다.</p>
+                    <p>2. 주최자는 행사 운영과 직접 관련된 안전에 대해 합리적인 책임을 집니다.</p>
+                    <p>3. 불가피한 사정(장소 문제, 참가자 성비 불균형 등)으로 행사가 취소될 경우 참가비 전액을 환불합니다.</p>
+                    
+                    <h4>제6조 (책임의 한계)</h4>
+                    <p>1. 주최자는 참가자 간 개인적 교류, 사적 만남, 금전적·정서적 문제 등에 대해 어떠한 법적 책임도 지지 않습니다.</p>
+                    <p>2. 다만, 행사 운영 과정에서 발생한 주최자의 과실에 대해서는 관련 법령이 정한 범위 내에서 책임을 집니다.</p>
+                    
+                    <h4>제7조 (개인정보 보호)</h4>
+                    <p>1. 주최자는 참가 신청 및 행사 진행을 위해 필요한 최소한의 개인정보(이름, 연락처 등)를 수집할 수 있습니다.</p>
+                    <p>2. 개인정보는 행사 운영 목적으로만 사용되며, 법령에 따라 정해진 기간 후 즉시 파기됩니다.</p>
+                    
+                    <h4>제8조 (기타)</h4>
+                    <p>1. 본 약관은 불가항력적 사유(천재지변, 정부 규제 등)로 인한 행사 취소 시에도 참가자에게 책임을 묻지 않습니다.</p>
+                    <p>2. 본 약관은 필요 시 개정될 수 있으며, 개정 시 사전 공지 후 적용됩니다.</p>
+                    <p>3. 주최자의 공식 연락처: <a href="mailto:team.gglimpse@gmail.com" class="contact-link">team.gglimpse@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개인정보처리방침 모달 -->
+    <div id="privacyModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content privacy-modal">
+            <div class="modal-header">
+                <h3 class="modal-title">개인정보처리방침</h3>
+                <button class="modal-close" onclick="closePrivacyModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="privacy-content">
+                    <p class="privacy-intro">gglimpse(이하 "회사")는 「개인정보 보호법」 등 관련 법령을 준수하며, 참가자들의 개인정보를 안전하게 보호하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.</p>
+                    
+                    <h4>1. 수집하는 개인정보 항목</h4>
+                    <p>회사는 참가 신청 시 다음의 개인정보를 수집합니다.</p>
+                    <ul class="privacy-list">
+                        <li><strong>필수항목:</strong> 이름, 연락처, 성별, 나이, 학교 및 학과, 학생증 사본, 사진(얼굴·전신)</li>
+                        <li><strong>선택항목:</strong> 자기소개, 지원동기, 하고 싶은 말</li>
+                    </ul>
+                    
+                    <h4>2. 개인정보의 수집 및 이용 목적</h4>
+                    <p>수집한 개인정보는 다음의 목적을 위해 이용됩니다.</p>
+                    <ul class="privacy-list">
+                        <li>참가자 본인 확인 및 신청 검토</li>
+                        <li>프로그램 운영 및 참가자 관리</li>
+                        <li>참가비 결제 확인 및 안내사항 전달</li>
+                        <li>행사 진행 관련 고지 및 공지</li>
+                    </ul>
+                    
+                    <h4>3. 개인정보의 보유 및 이용기간</h4>
+                    <p>회사는 참가자의 개인정보를 수집·이용 동의일로부터 2년간 보관하며, 보관기간 경과 시 지체 없이 안전한 방법으로 파기합니다.</p>
+                    <p class="privacy-note">※ 단, 관계 법령에 따라 일정 기간 보관이 필요한 경우 해당 기간 동안 보관할 수 있습니다.</p>
+                    
+                    <h4>4. 개인정보의 제3자 제공</h4>
+                    <p>회사는 참가자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 참가자의 별도 동의가 있거나 법령에 의거한 경우에 한해 제공될 수 있습니다.</p>
+                    
+                    <h4>5. 개인정보 처리의 위탁</h4>
+                    <p>회사는 개인정보를 외부에 위탁하지 않습니다. (향후 위탁이 필요한 경우 사전에 고지 및 동의 절차를 거칩니다.)</p>
+                    
+                    <h4>6. 정보주체의 권리</h4>
+                    <p>참가자는 언제든지 자신의 개인정보 열람, 정정, 삭제, 처리정지 등을 요구할 수 있습니다.</p>
+                    <p class="privacy-contact">문의 및 요청은 회사 이메일(<a href="mailto:team.gglimpse@gmail.com" class="contact-link">team.gglimpse@gmail.com</a>)로 접수 가능하며, 지체 없이 조치하겠습니다.</p>
+                    
+                    <h4>7. 개인정보 보호책임자</h4>
+                    <p>회사는 개인정보 보호를 위하여 다음과 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+                    <ul class="privacy-list">
+                        <li><strong>개인정보 보호책임자:</strong> 김선민</li>
+                        <li><strong>이메일:</strong> <a href="mailto:team.gglimpse@gmail.com" class="contact-link">team.gglimpse@gmail.com</a></li>
+                    </ul>
+                    
+                    <h4>8. 개인정보처리방침 변경</h4>
+                    <p>본 개인정보처리방침은 법령 개정, 서비스 내용 변경 등에 따라 개정될 수 있으며, 변경 시 즉시 공지합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/gglimpse_official/" target="_blank" class="instagram-link">
+                        <img src="images/insta-icon.webp" alt="Instagram" class="instagram-icon">
+                        <span>@gglimpse_official</span>
+                    </a>
+                </div>
+                <p>
+                    <a href="#" class="terms-link" onclick="showTermsModal()">이용약관</a> 
+                    <a href="#" class="privacy-link" onclick="showPrivacyModal()">개인정보처리방침</a>
+                </p>
+                <p>주식회사 gglimpse | 대표 김선민</p>
+                <p>사업자등록번호 180-18-02589</p>
+
+                <p>이메일 team.gglimpse@gmail.com</p>
+                <p>서울특별시 성동구 상원10다길 12-17, 301호</p>
+                <p>©gglimpse. All rights reserved.</p>
+            </div>
+            <div class="footer-logo">
+                <button class="footer-refresh-btn" onclick="refreshPage()" aria-label="페이지 새로고침">
+                    <img src="images/logo.png" alt="gglimpse 로고" class="footer-logo-image">
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <button class="floating-btn" aria-label="1:1 문의">
+        <span class="floating-icon">💬</span>
+        <span class="floating-text">1:1 문의</span>
+    </button>
+    
+    <button class="top-btn" aria-label="맨 위로" onclick="scrollToTop()">
+        <span class="top-icon">↑</span>
+        <span class="top-text">TOP</span>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html> 
