@@ -40,6 +40,57 @@ document.addEventListener('DOMContentLoaded', function() {
     initHamburgerMenu();
 });
 
+// DOM 로드 완료 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM 로드 완료 - 초기화 시작');
+    
+    // TOP 버튼 초기화
+    initTopButton();
+    
+    // 스티키 네비게이션 초기화
+    initStickyNavigation();
+    
+    console.log('초기화 완료');
+});
+
+// TOP 버튼 초기화 및 제어
+function initTopButton() {
+    const topBtn = document.querySelector('.top-btn');
+    if (!topBtn) {
+        console.log('TOP 버튼을 찾을 수 없습니다.');
+        return;
+    }
+    
+    console.log('TOP 버튼 초기화 시작');
+    
+    // 초기 상태 설정
+    toggleTopButton();
+    
+    // 스크롤 이벤트 리스너 추가
+    window.addEventListener('scroll', toggleTopButton);
+    
+    // 클릭 이벤트 리스너 추가
+    topBtn.addEventListener('click', scrollToTop);
+    
+    console.log('TOP 버튼 초기화 완료');
+}
+
+// TOP 버튼 표시/숨김 제어
+function toggleTopButton() {
+    const topBtn = document.querySelector('.top-btn');
+    if (!topBtn) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > 300) {
+        topBtn.classList.add('show');
+        console.log('TOP 버튼 표시됨');
+    } else {
+        topBtn.classList.remove('show');
+        console.log('TOP 버튼 숨김됨');
+    }
+}
+
 // 가이드 아이템 토글 기능
 function initGuideItems() {
     const guideItems = document.querySelectorAll('.guide-item');
@@ -363,18 +414,6 @@ function scrollToTop() {
         top: 0,
         behavior: 'smooth'
     });
-}
-
-// TOP 버튼 표시/숨김 제어
-function toggleTopButton() {
-    const topBtn = document.querySelector('.top-btn');
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > 300) {
-        topBtn.classList.add('show');
-    } else {
-        topBtn.classList.remove('show');
-    }
 }
 
 // 1:1 문의 모달 표시
