@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 모달 외부 클릭 시 닫기 기능
     initModalCloseOnOutsideClick();
+    
+    // 햄버거 메뉴 기능
+    initHamburgerMenu();
 });
 
 // 가이드 아이템 토글 기능
@@ -1404,12 +1407,138 @@ function initStickyNavigation() {
     const sections = document.querySelectorAll('section[id]');
     const header = document.querySelector('.header');
     
-    if (!stickyNav || !sections.length) return;
+    if (!stickyNav || !sections.length) {
+        console.log('스티키 네비게이션 요소를 찾을 수 없습니다.');
+        return;
+    }
+    
+    console.log('스티키 네비게이션 초기화 시작');
+    console.log('현재 화면 너비:', window.innerWidth);
+    console.log('헤더 높이:', header ? header.offsetHeight : 80);
+    console.log('스티키 네비게이션 높이:', stickyNav.offsetHeight);
     
     let headerHeight = header ? header.offsetHeight : 80;
     let stickyNavHeight = stickyNav.offsetHeight;
     
-    // 스크롤 시 현재 섹션에 따른 네비게이션 활성화만 처리
+    // 모바일에서 스티키 기능 강제 활성화
+    function forceStickyOnMobile() {
+        if (window.innerWidth <= 768) {
+            console.log('모바일 모드: JavaScript 기반 스티키 활성화');
+            
+            // 히어로 섹션 찾기
+            const heroSection = document.querySelector('.hero');
+            const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+            
+            // 모바일에서는 JavaScript로 스티키 기능 구현
+            // 초기에는 히어로 섹션 아래에 자연스럽게 위치
+            stickyNav.style.cssText = `
+                position: relative !important;
+                top: auto !important;
+                left: auto !important;
+                right: auto !important;
+                z-index: 999 !important;
+                background: #ffffff !important;
+                border-bottom: 1px solid #e5e5e5 !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+                width: 100% !important;
+                max-width: 100vw !important;
+                transition: all 0.3s ease !important;
+                transform: translateY(0) !important;
+            `;
+            
+            console.log('스티키 네비게이션 스타일 적용됨:', stickyNav.style.cssText);
+            console.log('히어로 섹션 높이:', heroHeight);
+            
+            // 스크롤 이벤트로 스티키 동작 구현
+            let isSticky = false; // 스티키 상태 추적
+            let lastScrollTop = 0; // 마지막 스크롤 위치 추적
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // 스크롤 방향 확인 (위/아래)
+                const isScrollingDown = scrollTop > lastScrollTop;
+                lastScrollTop = scrollTop;
+                
+                // 스티키 네비게이션이 실제로 화면 맨 위에 도착했을 때만 활성화
+                // 히어로 섹션의 전체 높이 + 스티키 네비게이션의 높이 + 여유 공간(20px)만큼 스크롤된 후에 고정
+                const stickyActivationPoint = heroHeight + stickyNavHeight + 20;
+                
+                // 디바운싱을 위한 지연 처리
+                clearTimeout(window.stickyTimeout);
+                window.stickyTimeout = setTimeout(() => {
+                    if (scrollTop >= stickyActivationPoint && !isSticky) {
+                        // 스티키 상태로 변경
+                        stickyNav.style.cssText = `
+                            position: fixed !important;
+                            top: 0 !important;
+                            left: 0 !important;
+                            right: 0 !important;
+                            z-index: 999 !important;
+                            background: #ffffff !important;
+                            border-bottom: 1px solid #e5e5e5 !important;
+                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+                            width: 100% !important;
+                            max-width: 100vw !important;
+                            transition: all 0.3s ease !important;
+                            transform: translateY(0) !important;
+                        `;
+                        isSticky = true;
+                        console.log('스티키 네비게이션 고정됨, 스크롤 위치:', scrollTop, '히어로 높이:', heroHeight, '스티키 높이:', stickyNavHeight, '활성화 지점:', stickyActivationPoint);
+                    } else if (scrollTop < stickyActivationPoint && isSticky) {
+                        // 일반 위치로 복귀
+                        stickyNav.style.cssText = `
+                            position: relative !important;
+                            top: auto !important;
+                            left: auto !important;
+                            right: auto !important;
+                            z-index: 999 !important;
+                            background: #ffffff !important;
+                            border-bottom: 1px solid #e5e5e5 !important;
+                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+                            width: 100% !important;
+                            max-width: 100vw !important;
+                            transition: all 0.3s ease !important;
+                            transform: translateY(0) !important;
+                        `;
+                        isSticky = false;
+                        console.log('스티키 네비게이션 일반 위치로 복귀, 스크롤 위치:', scrollTop, '히어로 높이:', heroHeight, '스티키 높이:', stickyNavHeight, '활성화 지점:', stickyActivationPoint);
+                    }
+                }, 10); // 10ms 지연으로 성능 최적화
+            });
+            
+        } else {
+            console.log('PC 모드: CSS 기반 스티키 사용');
+            
+            // PC에서는 CSS 스티키 사용
+            stickyNav.style.cssText = '';
+            
+            // PC에서 스티키 클래스 추가
+            stickyNav.classList.add('sticky-enabled');
+            
+            // 여백 제거
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.style.marginBottom = '';
+            }
+            
+            // PC에서 스크롤 시 스티키 상태 관리
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > headerHeight) {
+                    stickyNav.classList.add('scrolled');
+                } else {
+                    stickyNav.classList.remove('scrolled');
+                }
+            });
+        }
+    }
+    
+    // 초기 설정
+    forceStickyOnMobile();
+    
+    // 스크롤 시 현재 섹션에 따른 네비게이션 활성화
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
@@ -1429,8 +1558,15 @@ function initStickyNavigation() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                // 항상 헤더 + sticky nav 높이만큼 빼기 (헤더는 항상 표시되므로)
-                const targetPosition = targetElement.offsetTop - headerHeight - stickyNavHeight;
+                // 모바일에서는 fixed position을 고려한 스크롤 위치 계산
+                let targetPosition;
+                if (window.innerWidth <= 768) {
+                    targetPosition = targetElement.offsetTop - headerHeight - stickyNavHeight;
+                } else {
+                    targetPosition = targetElement.offsetTop - headerHeight - stickyNavHeight;
+                }
+                
+                console.log('스크롤 대상:', targetId, '위치:', targetPosition);
                 
                 window.scrollTo({
                     top: targetPosition,
@@ -1442,6 +1578,29 @@ function initStickyNavigation() {
     
     // 초기 활성 링크 설정
     updateActiveNavLink(window.pageYOffset || document.documentElement.scrollTop, headerHeight, stickyNavHeight);
+    
+    // 리사이즈 시 스티키 설정 재적용
+    window.addEventListener('resize', function() {
+        console.log('화면 크기 변경됨:', window.innerWidth);
+        headerHeight = header ? header.offsetHeight : 80;
+        stickyNavHeight = stickyNav.offsetHeight;
+        forceStickyOnMobile();
+        updateActiveNavLink(window.pageYOffset || document.documentElement.scrollTop, headerHeight, stickyNavHeight);
+    });
+    
+    // DOM 변경 감지 (동적 콘텐츠 로딩 시)
+    const observer = new MutationObserver(function() {
+        headerHeight = header ? header.offsetHeight : 80;
+        stickyNavHeight = stickyNav.offsetHeight;
+        forceStickyOnMobile();
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    console.log('스티키 네비게이션 초기화 완료');
 }
 
 // 현재 섹션에 따른 네비게이션 활성화
@@ -1511,5 +1670,81 @@ function initProcessHighlight() {
                 }
             }, 1000); // 스크롤 완료 후 1초 뒤 실행
         });
+    }
+}
+
+// 햄버거 메뉴 기능
+function initHamburgerMenu() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    let scrollPosition = 0;
+    
+    // 햄버거 메뉴 클릭 시 모바일 메뉴 열기
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', function() {
+            // 현재 스크롤 위치 저장
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            mobileNav.classList.add('active');
+            document.body.classList.add('menu-open'); // body에 클래스 추가
+        });
+    }
+    
+    // 닫기 버튼 클릭 시 모바일 메뉴 닫기
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            document.body.classList.remove('menu-open'); // body에서 클래스 제거
+            // 스크롤 위치 복원
+            setTimeout(() => {
+                window.scrollTo(0, scrollPosition);
+            }, 100);
+        });
+    }
+    
+    // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            document.body.classList.remove('menu-open'); // body에서 클래스 제거
+            // 스크롤 위치 복원
+            setTimeout(() => {
+                window.scrollTo(0, scrollPosition);
+            }, 100);
+        });
+    });
+    
+    // 모바일 메뉴 외부 클릭 시 닫기
+    document.addEventListener('click', function(e) {
+        if (mobileNav && mobileNav.classList.contains('active')) {
+            if (!mobileNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                document.body.classList.remove('menu-open'); // body에서 클래스 제거
+                // 스크롤 위치 복원
+                setTimeout(() => {
+                    window.scrollTo(0, scrollPosition);
+                }, 100);
+            }
+        }
+    });
+    
+    // ESC 키로 모바일 메뉴 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            document.body.classList.remove('active');
+            document.body.classList.remove('menu-open'); // body에서 클래스 제거
+            // 스크롤 위치 복원
+            setTimeout(() => {
+                window.scrollTo(0, scrollPosition);
+            }, 100);
+        }
+    });
+    
+    // 페이지 로드 시 메뉴 상태 초기화
+    if (mobileNav) {
+        mobileNav.classList.remove('active');
+        document.body.classList.remove('menu-open');
     }
 } 
