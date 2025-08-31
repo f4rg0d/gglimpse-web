@@ -1,5 +1,7 @@
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM 로드 완료 - 초기화 시작');
+    
     // 가이드 아이템 토글 기능
     initGuideItems();
     
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFAQ();
     
     // Sticky 네비게이션 기능
-    initStickyNavigation();
+    initStickyNavigationWithActive();
     
     // Process section 하이라이트 효과
     initProcessHighlight();
@@ -38,17 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 햄버거 메뉴 기능
     initHamburgerMenu();
-});
-
-// DOM 로드 완료 시 초기화
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM 로드 완료 - 초기화 시작');
     
     // TOP 버튼 초기화
     initTopButton();
-    
-    // 스티키 네비게이션 초기화
-    initStickyNavigation();
     
     console.log('초기화 완료');
 });
@@ -84,10 +78,8 @@ function toggleTopButton() {
     
     if (scrollTop > 300) {
         topBtn.classList.add('show');
-        console.log('TOP 버튼 표시됨');
     } else {
         topBtn.classList.remove('show');
-        console.log('TOP 버튼 숨김됨');
     }
 }
 
@@ -1440,7 +1432,7 @@ window.addEventListener('load', function() {
 });
 
 // Sticky 네비게이션 초기화
-function initStickyNavigation() {
+function initStickyNavigationWithActive() {
     const stickyNav = document.querySelector('.sticky-nav');
     const stickyNavLinks = document.querySelectorAll('.sticky-nav-link');
     const sections = document.querySelectorAll('section[id]');
@@ -1576,7 +1568,7 @@ function initStickyNavigation() {
     
     // 초기 설정
     forceStickyOnMobile();
-    
+
     // 스크롤 시 현재 섹션에 따른 네비게이션 활성화
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
