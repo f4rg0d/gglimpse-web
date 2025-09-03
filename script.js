@@ -682,15 +682,40 @@ function initSmoothScroll() {
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const stickyNav = document.querySelector('.sticky-nav');
-                    const stickyNavHeight = stickyNav && stickyNav.classList.contains('active') ? stickyNav.offsetHeight : 0;
-                    const targetPosition = targetElement.offsetTop - headerHeight - stickyNavHeight - 60;
+                    // 모바일과 데스크톱에서 다른 오프셋 적용
+                    const isMobile = window.innerWidth <= 768;
                     
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    if (isMobile) {
+                        // 모바일: 해당 섹션 제목이 화면 상단에 바로 보이도록
+                        const stickyNav = document.querySelector('.sticky-nav');
+                        const stickyNavHeight = stickyNav ? stickyNav.offsetHeight : 0;
+                        
+                        // 후기 섹션인 경우 특별 처리
+                        if (targetId === '#reviews') {
+                            const targetPosition = targetElement.offsetTop - stickyNavHeight;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            const targetPosition = targetElement.offsetTop - stickyNavHeight + 20; // 20px 여백 추가
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    } else {
+                        // 데스크톱: 기존 방식 유지 (헤더, 스티키 네비게이션 고려)
+                        const headerHeight = document.querySelector('.header').offsetHeight;
+                        const stickyNav = document.querySelector('.sticky-nav');
+                        const stickyNavHeight = stickyNav && stickyNav.classList.contains('active') ? stickyNav.offsetHeight : 0;
+                        const targetPosition = targetElement.offsetTop - headerHeight - stickyNavHeight - 60;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             }
         });
@@ -1461,10 +1486,10 @@ function initStickyNavigationWithActive() {
             const heroHeight = heroSection ? heroSection.offsetHeight : 0;
             
             // 모바일에서는 JavaScript로 스티키 기능 구현
-            // 초기에는 히어로 섹션 아래에 자연스럽게 위치
+            // 초기에는 스티키 상태로 설정
             stickyNav.style.cssText = `
-                position: relative !important;
-                top: auto !important;
+                position: sticky !important;
+                top: 0 !important;
                 left: auto !important;
                 right: auto !important;
                 z-index: 999 !important;
@@ -1541,11 +1566,16 @@ function initStickyNavigationWithActive() {
         } else {
             console.log('PC 모드: CSS 기반 스티키 사용');
             
-            // PC에서는 CSS 스티키 사용
+            // PC에서는 CSS 스티키 사용하되 JavaScript로 보완
             stickyNav.style.cssText = '';
             
             // PC에서 스티키 클래스 추가
             stickyNav.classList.add('sticky-enabled');
+            
+            // PC에서 스티키 기능 강화
+            stickyNav.style.position = 'sticky';
+            stickyNav.style.top = '80px';
+            stickyNav.style.zIndex = '999';
             
             // 여백 제거
             const heroSection = document.querySelector('.hero');
@@ -1559,6 +1589,11 @@ function initStickyNavigationWithActive() {
                 
                 if (scrollTop > headerHeight) {
                     stickyNav.classList.add('scrolled');
+                    // PC에서 스티키 상태 강제 적용
+                    if (stickyNav.style.position !== 'sticky') {
+                        stickyNav.style.position = 'sticky';
+                        stickyNav.style.top = '80px';
+                    }
                 } else {
                     stickyNav.classList.remove('scrolled');
                 }
@@ -1709,8 +1744,14 @@ function initHamburgerMenu() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNav = document.getElementById('mobileNav');
     const mobileNavClose = document.getElementById('mobileNavClose');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileNavLinks = document.querySelectorAll('#mobileNav .mobile-nav-link');
     let scrollPosition = 0;
+    
+    console.log('햄버거 메뉴 초기화 시작');
+    console.log('햄버거 메뉴:', hamburgerMenu);
+    console.log('모바일 네비게이션:', mobileNav);
+    console.log('모바일 네비게이션 링크들:', mobileNavLinks);
+    console.log('모바일 네비게이션 링크 개수:', mobileNavLinks.length);
     
     // 햄버거 메뉴 클릭 시 모바일 메뉴 열기
     if (hamburgerMenu) {
@@ -1734,15 +1775,54 @@ function initHamburgerMenu() {
         });
     }
     
-    // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+    // 모바일 메뉴 링크 클릭 시 해당 섹션으로 이동하고 메뉴 닫기
     mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileNav.classList.remove('active');
-            document.body.classList.remove('menu-open'); // body에서 클래스 제거
-            // 스크롤 위치 복원
-            setTimeout(() => {
-                window.scrollTo(0, scrollPosition);
-            }, 100);
+        console.log('모바일 네비게이션 링크 이벤트 리스너 추가:', link);
+        link.addEventListener('click', function(e) {
+            console.log('모바일 네비게이션 링크 클릭됨:', this);
+            
+            const targetId = this.getAttribute('href');
+            console.log('타겟 ID:', targetId);
+            const targetElement = document.querySelector(targetId);
+            console.log('타겟 요소:', targetElement);
+            
+            if (targetElement) {
+                // 모바일에서 해당 섹션으로 스크롤
+                const stickyNav = document.querySelector('.sticky-nav');
+                const stickyNavHeight = stickyNav ? stickyNav.offsetHeight : 0;
+                console.log('스티키 네비게이션 높이:', stickyNavHeight);
+                
+                // 후기 섹션인 경우 특별 처리
+                if (targetId === '#reviews') {
+                    const targetPosition = targetElement.offsetTop - stickyNavHeight;
+                    console.log('후기 섹션으로 이동, 위치:', targetPosition);
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    const targetPosition = targetElement.offsetTop - stickyNavHeight + 20; // 20px 여백 추가
+                    console.log('다른 섹션으로 이동, 위치:', targetPosition);
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // 스크롤 완료 후 메뉴 닫기
+                setTimeout(() => {
+                    mobileNav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }, 500);
+            } else {
+                console.log('타겟 요소를 찾을 수 없음:', targetId);
+                // 타겟을 찾을 수 없는 경우 즉시 메뉴 닫기
+                mobileNav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+            
+            // 기본 동작 방지
+            e.preventDefault();
         });
     });
     

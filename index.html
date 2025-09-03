@@ -54,8 +54,8 @@
             
                     /* 모바일에서 스티키 네비게이션 기본 스타일 */
         .sticky-nav {
-            position: relative !important;
-            top: auto !important;
+            position: sticky !important;
+            top: 0 !important;
             z-index: 999 !important;
             background: #ffffff !important;
             border-bottom: 1px solid #e5e5e5 !important;
@@ -66,12 +66,15 @@
             transform: translateZ(0);
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
+            width: 100% !important;
+            max-width: 100vw !important;
         }
         
         /* 모바일에서 스티키 네비게이션 강제 활성화 */
         .sticky-nav[style*="position: relative"],
         .sticky-nav[style*="position:relative"] {
             position: sticky !important;
+            top: 0 !important;
         }
         
         .sticky-nav[style*="top: auto"],
@@ -82,6 +85,7 @@
         /* JavaScript로 스티키 기능이 적용된 경우 */
         .sticky-nav[style*="position: fixed"] {
             position: fixed !important;
+            top: 0 !important;
         }
         
         /* 모바일에서 후기 섹션 페이지네이션 스타일 */
@@ -138,7 +142,7 @@
                 display: flex !important;
                 flex-direction: column !important;
                 gap: 24px !important;
-                padding: 0 !important; /* 패딩 제거하고 카드 자체에서 중앙 정렬 */
+                padding: 0 !important; /* 패딩 제거 */
                 box-sizing: border-box !important;
                 align-items: center !important; /* 카드들을 중앙에 정렬 */
                 justify-content: center !important; /* 세로 방향도 중앙 정렬 */
@@ -183,7 +187,7 @@
             .reviews-container-mobile .reviews-grid {
                 display: flex !important;
                 flex-direction: row !important;
-                width: 300% !important;
+                width: 300% !important; /* 3페이지 × 100% = 300% */
                 grid-template-columns: none !important;
                 gap: 0 !important;
                 margin: 20px 0 0 0 !important;
@@ -195,6 +199,7 @@
                 place-items: unset !important;
                 justify-content: unset !important;
                 align-content: unset !important;
+                transform-origin: left center !important; /* transform 기준점을 왼쪽 중앙으로 설정 */
             }
             
             /* transform 속성을 강제로 적용 */
@@ -208,17 +213,17 @@
             }
             
             .reviews-container-mobile .reviews-grid[data-current-page="2"] {
-                transform: translateX(-100%) !important;
+                transform: translateX(-107%) !important; /* 107% 이동 - 두 번째 페이지가 화면 중앙에 오도록 */
             }
             
             .reviews-container-mobile .reviews-grid[data-current-page="3"] {
-                transform: translateX(-200%) !important;
+                transform: translateX(-214%) !important; /* 214% 이동 - 세 번째 페이지가 화면 중앙에 오도록 */
             }
             
             /* 모바일 카드 표시 - 진행방식 카드와 동일한 스타일 */
             .review-card {
-                width: calc(100% - 40px) !important; /* 양쪽에 20px씩 여백을 두고 중앙 정렬 */
-                max-width: calc(100% - 40px) !important; 
+                width: calc(100% - 20px) !important; /* 양쪽에 10px씩 여백을 두고 중앙 정렬 */
+                max-width: calc(100% - 20px) !important; 
                 margin: 0 auto !important; /* 카드 자체를 중앙에 정렬 */
                 padding: 20px 24px !important; /* 모바일에서 패딩 줄임 */
                 box-sizing: border-box !important;
@@ -685,7 +690,11 @@
         }
         
         @media (max-width: 480px) {
-            .hero-title,
+            .hero-title {
+                font-size: 28px !important;
+                padding: 0 15px !important;
+            }
+            
             .hero-subtitle,
             .hero-description {
                 font-size: 20px !important;
@@ -1106,7 +1115,7 @@
                 <div class="review-card">
                     <div class="review-tag">💬 깊이 있는 대화</div>
                                                 <div class="review-content">
-                                <p>"새로운 사람과 다양한 얘기를 나눠보고 싶어서 신청했는데,<br><strong>적당히 깊이있는 대화를 나눌 수 있어서 좋았어요!</strong>"</p>
+                                <p>"새로운 사람과 다양한 얘기를 나눠보고 싶어서 <br class="mobile-break">신청했는데,<br><strong>적당히 깊이있는 대화를 나눌 수 있어서 좋았어요!</strong>"</p>
                             </div>
                     <div class="review-author">
                         <div class="author-avatar">👤</div>
@@ -1191,7 +1200,7 @@
                         <div class="review-card">
                             <div class="review-tag">💬 깊이 있는 대화</div>
                             <div class="review-content">
-                                <p>"새로운 사람과 다양한 얘기를 나눠보고 싶어서 신청했는데,<br><strong>적당히 깊이있는 대화를 나눌 수 있어서 좋았어요!</strong>"</p>
+                                <p>"새로운 사람과 다양한 얘기를 나눠보고 싶어서<br class="mobile-break">신청했는데,<br><strong>적당히 깊이있는 대화를 나눌 수 있어서 좋았어요!</strong>"</p>
                             </div>
                             <div class="review-author">
                                 <div class="author-avatar">👤</div>
@@ -1286,79 +1295,66 @@
         <div class="container">
             <h2 class="section-title">📋 행사 안내</h2>
             
-            <!-- summary chips -->
-            <div class="summary-chips">
-                <span class="chip">📍 서울 · 카페/파티룸</span>
-                <span class="chip">👥 남녀 각 6–8명</span>
-                <span class="chip">⏱️ 약 2시간 30분</span>
-                <span class="chip">💳 남 30,000 / 여 25,000</span>
-            </div>
-
-            <!-- details list -->
-            <div class="details-list">
-                <div class="detail-item">
-                    <span class="detail-label">장소</span>
-                    <p class="detail-text">서울 내 카페/파티룸 (개별 안내)</p>
-                </div>
-                
-                <div class="detail-item">
-                    <span class="detail-label">대상</span>
-                    <p class="detail-text">서울/경기권 4년제 대학 재학생·휴학생·대학원생</p>
-                    <p class="detail-secondary">(06년생~00년생)</p>
-                </div>
-                
-                <div class="detail-item">
-                    <span class="detail-label">인원</span>
-                    <p class="detail-text">남녀 각 6–8명</p>
-                </div>
-                
-                <div class="detail-item">
-                    <span class="detail-label">시간</span>
-                    <p class="detail-text">약 2시간 30분</p>
-                    <p class="detail-secondary">(10분 대화 + 3분 메모)</p>
-                </div>
-                
-                <div class="detail-item">
-                    <span class="detail-label">참가비</span>
-                    <div class="price-section">
-                        <div class="discount-badge">🎁 사전예약 혜택</div>
-                        <div class="price-row">
-                            <span class="gender">남</span>
-                            <span class="original-price">30,000원</span>
-                            <span class="arrow">→</span>
-                            <span class="discount-price">25,000원</span>
-                        </div>
-                        <div class="price-row">
-                            <span class="gender">여</span>
-                            <span class="original-price">25,000원</span>
-                            <span class="arrow">→</span>
-                            <span class="discount-price">20,000원</span>
-                        </div>
+            <!-- 모바일 친화적인 간단한 정보 카드 -->
+            <div class="event-info-cards">
+                <div class="info-card">
+                    <div class="card-icon">📍</div>
+                    <div class="card-content">
+                        <h3 class="card-title">장소</h3>
+                        <p class="card-text">서울 내 카페/파티룸<br><small>(개별 안내)</small></p>
                     </div>
-                    <p class="detail-secondary">(공간·음료 포함, <strong>결제는 확정 후 안내</strong>)</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">👥</div>
+                    <div class="card-content">
+                        <h3 class="card-title">대상</h3>
+                        <p class="card-text">서울/경기권 대학생<br><small>(06년생~00년생)</small></p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">⏱️</div>
+                    <div class="card-content">
+                        <h3 class="card-title">시간</h3>
+                        <p class="card-text">약 2시간 30분<br><small>(10분 대화 + 3분 메모)</small></p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">💳</div>
+                    <div class="card-content">
+                        <h3 class="card-title">참가비</h3>
+                        <div class="price-info">
+                            <div class="price-item">
+                                <span class="gender">남</span>
+                                <span class="original-price">30,000원</span>
+                                <span class="arrow">→</span>
+                                <span class="discount-price">25,000원</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="gender">여</span>
+                                <span class="original-price">25,000원</span>
+                                <span class="arrow">→</span>
+                                <span class="discount-price">20,000원</span>
+                            </div>
+                        </div>
+                        <p class="price-note"><small>(사전예약 할인가, 공간·음료 포함)</small></p>
+                    </div>
                 </div>
             </div>
 
-            <!-- notice box -->
-            <div class="notice-box" role="note" aria-label="사전예약 안내">
+            <!-- 간단한 공지사항 -->
+            <div class="simple-notice">
                 <div class="notice-header">
                     <span class="notice-icon">📨</span>
-                    <h3 class="notice-title">지금 <span class="highlight">사전예약</span> 가능합니다</h3>
+                    <h3 class="notice-title">사전예약 진행중</h3>
                 </div>
-                <ul class="notice-list">
-                    <li class="notice-item">
-                        <span class="check-icon">✅</span>
-                        사전예약하시면 회차 확정 시 <strong>가장 먼저</strong> 안내해드려요
-                    </li>
-                    <li class="notice-item">
-                        <span class="check-icon">✅</span>
-                        신청 인원이 많을 경우, <strong>신청서 기반으로 선발</strong>될 수 있어요
-                    </li>
-                </ul>
+                <div class="notice-content">
+                    <p>✅ 회차 확정 시 가장 먼저 안내</p>
+                    <p>✅ 신청서 기반 선발 가능</p>
+                </div>
             </div>
-
-            <!-- CTA section -->
-            <div class="cta-section">
                 <style>
                   :root{
                     --primary:#5561ff;          /* 브랜드 컬러 있으면 여기에 교체 */
@@ -1484,7 +1480,7 @@
                       <div class="help">숫자만 입력 (하이픈 없이)</div>
                     </div>
 
-                    <!-- reCAPTCHA -->
+                    <!-- reCAPTCHA (보이지 않게 설정) -->
                     <input type="hidden" name="token" id="captchaToken">
                     <button type="button"
                             id="submitBtn"
@@ -1492,14 +1488,33 @@
                             data-sitekey="6LfEQ6wrAAAAABpGQPrDwuZyb5mbOgRDbWPmGigQ"
                             data-size="invisible"
                             data-action="submit"
-                            data-badge="inline"
+                            data-badge="bottomright"
                             data-callback="onCaptcha">
                       사전예약 신청하기
                     </button>
 
-                    <!-- 배지 주변 여백 정리 -->
+                    <!-- reCAPTCHA 완전 숨김 스타일 -->
                     <style>
-                      .grecaptcha-badge { margin-top: 10px; transform: scale(.95); transform-origin: left top; }
+                      /* reCAPTCHA 배지 완전 숨김 */
+                      .grecaptcha-badge {
+                        visibility: hidden !important;
+                        opacity: 0 !important;
+                        display: none !important;
+                      }
+                      
+                      /* reCAPTCHA iframe 완전 숨김 */
+                      .grecaptcha-badge iframe {
+                        visibility: hidden !important;
+                        opacity: 0 !important;
+                        display: none !important;
+                      }
+                      
+                      /* reCAPTCHA 관련 모든 요소 숨김 */
+                      .grecaptcha-badge * {
+                        visibility: hidden !important;
+                        opacity: 0 !important;
+                        display: none !important;
+                      }
                     </style>
                   </form>
                 </div>
@@ -1516,288 +1531,226 @@
 
             <!-- minimal premium styles -->
             <style>
-                /* Summary Chips */
-                .summary-chips {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 1.25rem;
-                    margin: 0 0 2rem 0;
-                }
-                
-                .chip {
-                    padding: 1rem 2rem;
-                    background: #F8FAFC;
-                    border: 1px solid #E2E8F0;
-                    border-radius: 50px;
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                    color: #1E293B;
-                    white-space: nowrap;
-                    transition: all 0.2s ease;
-                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-                }
-                
-                .chip:hover {
-                    background: #F1F5F9;
-                    border-color: #CBD5E1;
-                    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-                }
-                
-                @media (max-width: 640px) {
-                    .summary-chips {
-                        gap: 1.5rem;
-                        overflow-x: auto;
-                        padding-bottom: 0.5rem;
-                        max-width: 100%;
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
-                    .summary-chips::-webkit-scrollbar {
-                        display: none;
-                    }
-                }
-
-                /* Details List */
-                .details-list {
+                /* 모바일 친화적인 행사안내 카드 스타일 */
+                .event-info-cards {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
                     margin: 2rem 0;
-                    background: white;
+                }
+                
+                .info-card {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    padding: 1.5rem;
+                    background: #FFFFFF;
+                    border: 1px solid #E2E8F0;
                     border-radius: 16px;
-                    border: 1px solid #F1F5F9;
-                    overflow: hidden;
-                    max-width: 100%;
-                    width: 100%;
-                    box-sizing: border-box;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
                 }
                 
-                .detail-item {
-                    padding: 1.75rem 1.5rem;
-                    border-bottom: 1px solid #F1F5F9;
-                    transition: background-color 0.2s ease;
-                    max-width: 100%;
-                    width: 100%;
-                    box-sizing: border-box;
-                }
-                
-                .detail-item:hover {
-                    background-color: #FAFAFA;
-                }
-                
-                .detail-item:last-child {
-                    border-bottom: none;
-                }
-                
-                .detail-label {
-                    display: block;
-                    font-size: 0.75rem;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    color: #7D6BFF;
-                    margin-bottom: 1rem;
-                }
-                
-                .detail-text {
-                    font-size: 1.125rem;
-                    font-weight: 600;
-                    color: #1E293B;
-                    line-height: 1.6;
-                    margin: 0 0 0.75rem 0;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                }
-                
-                .detail-secondary {
-                    font-size: 0.8rem;
-                    color: #64748B;
-                    line-height: 1.5;
-                    margin: 0;
-                    padding-left: 0.75rem;
-                    border-left: 2px solid #E2E8F0;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                }
-                
-                @media (min-width: 768px) {
-                    .details-list {
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 0 2rem;
-                    }
-                    
-                    .detail-item {
-                        padding: 1.5rem 2rem;
-                    }
-                    
-                    .detail-item:nth-child(odd) {
-                        border-right: 1px solid #F1F5F9;
-                    }
-                }
-
-                /* 가격 섹션 스타일 */
-                .price-section {
-                    margin: 1rem 0;
-                }
-                
-                .discount-badge {
-                    display: inline-block;
-                    background: linear-gradient(135deg, #7D6BFF, #9F7AEA);
-                    color: white;
-                    padding: 0.5rem 1rem;
-                    border-radius: 20px;
-                    font-size: 0.875rem;
-                    font-weight: 600;
-                    margin-bottom: 1rem;
-                    box-shadow: 0 2px 8px rgba(125, 107, 255, 0.3);
-                }
-                
-                .price-row {
+                .card-icon {
+                    font-size: 2rem;
+                    width: 3rem;
+                    height: 3rem;
                     display: flex;
                     align-items: center;
-                    gap: 0.75rem;
-                    margin-bottom: 0.75rem;
-                    font-size: 1.125rem;
-                    line-height: 1.4;
+                    justify-content: center;
+                    background: #F8FAFC;
+                    border-radius: 12px;
+                    flex-shrink: 0;
                 }
                 
-                .price-row:last-child {
-                    margin-bottom: 0;
+                .card-content {
+                    flex: 1;
+                }
+                
+                .card-title {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    color: #1E293B;
+                    margin: 0 0 0.5rem 0;
+                }
+                
+                .card-text {
+                    font-size: 0.875rem;
+                    color: #475569;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+                
+                .card-text small {
+                    color: #64748B;
+                    font-size: 0.75rem;
+                }
+                
+                .price-info {
+                    margin: 0.5rem 0;
+                }
+                
+                .price-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin-bottom: 0.25rem;
                 }
                 
                 .gender {
+                    font-size: 0.75rem;
                     font-weight: 600;
                     color: #64748B;
                     min-width: 1.5rem;
                 }
                 
+                .price {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    color: #7D6BFF;
+                }
+                
                 .original-price {
                     text-decoration: line-through;
                     color: #94A3B8;
-                    font-size: 1rem;
+                    font-size: 0.875rem;
                     font-weight: 500;
                 }
                 
                 .arrow {
                     color: #7D6BFF;
                     font-weight: 600;
-                    font-size: 1.125rem;
+                    font-size: 0.875rem;
                 }
                 
                 .discount-price {
                     color: #7D6BFF;
                     font-weight: 700;
-                    font-size: 1.25rem;
+                    font-size: 0.875rem;
                 }
-
-                /* Notice Box */
-                .notice-box {
+                
+                .price-note {
+                    font-size: 0.75rem;
+                    color: #64748B;
+                    margin: 0.5rem 0 0 0;
+                }
+                
+                /* 간단한 공지사항 스타일 */
+                .simple-notice {
                     background: linear-gradient(135deg, #F8FAFF 0%, #F0F4FF 100%);
                     border: 1px solid #E0E7FF;
-                    border-radius: 20px;
-                    padding: 2.5rem;
+                    border-radius: 16px;
+                    padding: 1.5rem;
                     margin: 2rem 0;
-                    position: relative;
-                    max-width: 100%;
-                    width: 100%;
-                    box-sizing: border-box;
                 }
                 
-                .notice-box::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    height: 2px;
-                    background: #7D6BFF;
-                }
-                
-                .notice-header {
+                .simple-notice .notice-header {
                     display: flex;
                     align-items: center;
-                    gap: 1.25rem;
-                    margin-bottom: 2rem;
+                    gap: 1rem;
+                    margin-bottom: 1rem;
                 }
                 
-                .notice-icon {
+                .simple-notice .notice-icon {
                     font-size: 1.5rem;
                     background: white;
                     border-radius: 50%;
-                    width: 3rem;
-                    height: 3rem;
+                    width: 2.5rem;
+                    height: 2.5rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    box-shadow: 0 4px 16px rgba(125, 107, 255, 0.15);
+                    box-shadow: 0 2px 8px rgba(125, 107, 255, 0.15);
                 }
                 
-                .notice-title {
-                    font-size: 1.375rem;
+                .simple-notice .notice-title {
+                    font-size: 1.125rem;
                     font-weight: 700;
                     color: #1E293B;
                     margin: 0;
-                    line-height: 1.3;
                 }
                 
-                .highlight {
-                    color: #7D6BFF;
-                    font-weight: 900;
-                    text-shadow: 0 0 1px rgba(125, 107, 255, 0.3);
-                    background: linear-gradient(135deg, #7D6BFF, #9F7AEA);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                    font-size: 1.1em;
+                .simple-notice .notice-content {
+                    color: #475569;
                 }
                 
-                .notice-list {
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                }
-                
-                .notice-item {
+                .simple-notice .notice-content p {
+                    font-size: 0.875rem;
+                    margin: 0.5rem 0;
                     display: flex;
-                    align-items: flex-start;
-                    gap: 1rem;
-                    margin-bottom: 1.25rem;
-                    font-size: 1.125rem;
-                    line-height: 1.7;
-                    color: #374151;
-                    padding: 1rem;
-                    background: rgba(255, 255, 255, 0.6);
-                    border-radius: 12px;
-                    border: 1px solid rgba(224, 231, 255, 0.5);
+                    align-items: center;
+                    gap: 0.5rem;
                 }
                 
-                .notice-item:last-child {
-                    margin-bottom: 0;
-                }
-                
-                .check-icon {
-                    flex-shrink: 0;
-                    margin-top: 0.125rem;
-                    font-size: 0.95rem;
+                /* 모바일 최적화 */
+                @media (max-width: 640px) {
+                    .event-info-cards {
+                        gap: 0.75rem;
+                        margin: 1.5rem 0;
+                    }
+                    
+                    .info-card {
+                        padding: 1.25rem;
+                        border-radius: 12px;
+                    }
+                    
+                    .card-icon {
+                        font-size: 1.5rem;
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        border-radius: 8px;
+                    }
+                    
+                    .card-title {
+                        font-size: 15px;
+                    }
+                    
+                    .card-text {
+                        font-size: 15px;
+                    }
+                    
+                    .card-text small {
+                        font-size: 15px;
+                    }
+                    
+                    .price {
+                        font-size: 15px;
+                    }
+                    
+                    .original-price {
+                        font-size: 15px;
+                    }
+                    
+                    .arrow {
+                        font-size: 15px;
+                    }
+                    
+                    .discount-price {
+                        font-size: 15px;
+                    }
+                    
+                    .price-note {
+                        font-size: 15px;
+                    }
+                    
+                    .simple-notice {
+                        padding: 1.25rem;
+                        border-radius: 12px;
+                    }
+                    
+                    .simple-notice .notice-title {
+                        font-size: 15px;
+                    }
+                    
+                    .simple-notice .notice-content p {
+                        font-size: 15px;
+                    }
                 }
 
-                /* CTA Section */
-                .cta-section {
-                    background: white;
-                    border: 1px solid #F1F5F9;
-                    border-radius: 16px;
-                    padding: 2rem;
-                    margin: 2rem 0;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-                    max-width: 100%;
-                    width: 100%;
-                    box-sizing: border-box;
-                }
-                
-                .cta-buttons {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                    margin-bottom: 1.5rem;
-                }
+
+
+
+
+
                 
                 @media (min-width: 640px) {
                     .cta-buttons {
@@ -2764,22 +2717,25 @@
             function goToPage(pageNumber) {
                 currentPage = pageNumber;
                 
-                // 가로 슬라이드 애니메이션
-                const reviewsGrid = document.getElementById('reviewsGrid');
-                if (reviewsGrid) {
-                    // 각 페이지는 100% 너비이므로, 이동 거리는 (페이지번호 - 1) * 100%
-                    const translateX = -(pageNumber - 1) * 100;
-                    
-                    // 여러 방법으로 transform 적용 시도
-                    reviewsGrid.style.transform = `translateX(${translateX}%)`;
-                    reviewsGrid.setAttribute('data-current-page', pageNumber);
-                    
-                    // CSS 변수로도 설정
-                    reviewsGrid.style.setProperty('--custom-transform', `translateX(${translateX}%)`);
-                    
-                    console.log(`페이지 ${pageNumber}로 이동: translateX(${translateX}%)`); // 디버깅용
-                    console.log('실제 적용된 transform:', reviewsGrid.style.transform);
-                }
+                                 // 가로 슬라이드 애니메이션
+                 const reviewsGrid = document.getElementById('reviewsGrid');
+                 if (reviewsGrid) {
+                     // 각 페이지는 100% 너비이지만, 스와이프 시 107%씩 이동하여 더 많이 넘어가도록
+                     const translateX = -(pageNumber - 1) * 107;
+                     
+                     // transform-origin 설정
+                     reviewsGrid.style.transformOrigin = 'left center';
+                     
+                     // 여러 방법으로 transform 적용 시도
+                     reviewsGrid.style.transform = `translateX(${translateX}%)`;
+                     reviewsGrid.setAttribute('data-current-page', pageNumber);
+                     
+                     // CSS 변수로도 설정
+                     reviewsGrid.style.setProperty('--custom-transform', `translateX(${translateX}%)`);
+                     
+                     console.log(`페이지 ${pageNumber}로 이동: translateX(${translateX}%)`); // 디버깅용
+                     console.log('실제 적용된 transform:', reviewsGrid.style.transform);
+                 }
                 
                 // 페이지 닷 업데이트
                 pageDots.forEach((dot, index) => {
